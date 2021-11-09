@@ -9,7 +9,7 @@
 
      <body>
           <div class="middle">
-               <form class="add" action="" method="post">
+               <form class="add" action="/upload" method="post" enctype="multipart/form-data">
                     <div>
                          <label>Add product </label>
                     </div>
@@ -281,10 +281,10 @@
                     <textarea name="description"></textarea>
 
                     <div>
-                         <input type="file" id="myfile" name="myfile" multiple>
+                         <input type="file" id="myfile" name="image" multiple>
                     </div>
                     <br>
-                    <button type="submit">Add</button>
+                    <button type="submit" value="Upload">Add</button>
 
                </form>
                <br>
