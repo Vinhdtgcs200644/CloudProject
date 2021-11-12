@@ -33,7 +33,10 @@ function Update(req, res){
                .then((result)=>{
                     console.log("successfully added");
                     console.log(result);
-                    res.redirect("/admin");
+                    res.render("admin",{
+                         checkvar:5,
+                         data:["0","0","0","0","0"]
+                    });
                     return;
                }).catch((err)=>{
                     console.log("An error happened when adding");
@@ -96,7 +99,10 @@ function Update(req, res){
                          return res.status(500).send();
                     }else{
                          console.log("Successfully deleted");
-                         res.redirect("/admin");
+                         res.render("admin",{
+                              checkvar:6,
+                              data:["0","0","0","0","0"]
+                         });
                          return
                     }
                });
@@ -121,9 +127,12 @@ function Update(req, res){
                     Address:addr_,
                     email:email_
                }).then((result)=>{
-                    console.log("successfully added");
+                    console.log("successfully updated");
                     console.log(result);
-                    res.redirect("/admin");
+                    res.render("admin",{
+                         checkvar:7,
+                         data:["0","0","0","0","0"]
+                    });
                     return;
                }).catch((err)=>{
                     console.log("An error happened when adding");
@@ -135,10 +144,8 @@ function Update(req, res){
 
           }
 
-
      }
 }
-
 
 function StaffPage(req, res){
 

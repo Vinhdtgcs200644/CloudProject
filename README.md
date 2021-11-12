@@ -3,7 +3,7 @@
 
 ## Cách chạy
 ```
-git clone https://github.com/Vinhdtgcs200644/CloudProject.git
+git clone https://github.com/Vinhdtgcs200644/CloudWeb.git
 cd CloudProject
 npm install
 npm start
@@ -11,7 +11,7 @@ npm start
 
 ## Cách commit
 ```
-git clone https://github.com/Vinhdtgcs200644/CloudProject.git
+git clone https://github.com/Vinhdtgcs200644/CloudWeb.git
 cd CloudProject
 <chỉnh sửa v.v>
 git add .

@@ -3,6 +3,7 @@
      <head>
           <meta charset="utf-8">
           <title>Edit products</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
           <link rel="stylesheet" href="css/prodview.css">
 
      </head>
@@ -16,11 +17,11 @@
                     <hr>
                     <div>
                          <label>Title : </label>
-                         <input class="iprod" name="title">
+                         <input class="final-fix" name="title">
                     </div>
                     <div>
                          <label>Price : </label>
-                         <input class="iprod" name="price">
+                         <input class="final-fix" name="price">
                     </div>
                     <label>Made in : </label>
                     <select name="origin" id="cars">
@@ -284,7 +285,10 @@
                          <input type="file" id="myfile" name="image" multiple>
                     </div>
                     <br>
-                    <button type="submit" value="Upload">Add</button>
+                    <input type="submit" value="Add" name="submitadd"/>
+                    <div>
+                         <label id="status-add"></label>
+                    </div>
 
                </form>
                <br>
@@ -295,17 +299,17 @@
                     <hr>
                     <div>
                          <label>Search : </label>
-                         <input class="iprod" name="title" id="update-title">
-                         <button type="submit">Check</button>
+                         <input class="final-fix" name="title_2" id="update-title">
+                         <input type="submit" value="Check" name="buttonupload">
                          <label id="status"></label>
                     </div>
                     <div id="update-section">
                          <div>
                               <label>Price : </label>
-                              <input class="iprod" name="price" id="update-price">
+                              <input class="final-fix" name="price_2" id="update-price">
                          </div>
                          <label>Made in : </label>
-                         <select name="origin" id="update-country">
+                         <select name="origin_2" id="update-country">
                               <option value="None" selected>Select</option>
                               <option value="AF">Afghanistan</option>
                               <option value="AX">Åland Islands</option>
@@ -560,12 +564,47 @@
                          <div>
                               <label>Description : </label>
                          </div>
-                         <textarea name="description" id="update-descript"></textarea>
-
-                         <button type="submit">Update</button>
+                         <div>
+                              <textarea name="description_2" id="update-descript"></textarea>
+                         </div>
+                         <input type="submit"  name="buttonupload" value="Update"/>
+                         <input type="submit"  name="buttonupload" value="Delete"/>
+                    </div>
+                    <div>
+                         <label id="status-update"></label>
                     </div>
                </form>
+               <br>
+               <form action="" method="post">
+                    <div>
+                         <label>Listing products</label>
+                    </div>
+                    <hr>
+                    <input type="submit" id="show-button" value="Show" name="buttonupload"/>
+                    <% if(checkvar==9){ %>
+                    <table class="table table-striped table-bordered table-hover">
+                         <thead>
+                              <th>Title</th>
+                              <th>Price</th>
+                              <th>Origin</th>
+                              <th>Description</th>
+                         </thead>
+                         <tbody>
+                              <% for(var item of result) { %>
+                              <tr>
+                                   <td><%= item.title %></td>
+                                   <td><%= item.price %></td>
+                                   <td><%= item.origin %></td>
+                                   <td><%= item.description %></td>
+                              </tr>
+                              <% } %>
+                         </tbody>
 
+                    </table>
+                    <% }else{ %>
+
+                    <% } %>
+               </form>
           </div>
      </body>
 </html>
@@ -574,6 +613,8 @@
 
      if(check==2){
           document.getElementById("status").innerHTML ="Please fill in";
+     }else if(check==9){
+          document.getElementById("show-button").style.display = "none";
      }else if(check==3){
           document.getElementById("status").innerHTML ="Doesn't exist";
      }else if(check==4){
@@ -582,5 +623,17 @@
           document.getElementById("update-price").value = "<%= data[1] %>";
           document.getElementById("update-country").value = "<%= data[2] %>";
           document.getElementById("update-descript").innerHTML = "<%= data[3] %>";
+     }else if(check==5){
+          document.getElementById("status-add").innerHTML = "Successfully added";
+          document.getElementById("status-add").style.color = "green";
+     }else if(check==6){
+          document.getElementById("status-add").innerHTML = "Please fill in necessary information";
+          document.getElementById("status-add").style.color = "red";
+     }else if(check==7){
+          document.getElementById("status-update").innerHTML = "Successfully updated";
+          document.getElementById("status-update").style.color = "green";
+     }else if(check==8){
+          document.getElementById("status-update").innerHTML = "Successfully deleted";
+          document.getElementById("status-update").style.color = "green";
      }
 </script>
